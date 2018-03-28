@@ -1,6 +1,7 @@
 package com.lab.sadba.planeteparents;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lab.sadba.planeteparents.data.model.VerifParent;
+import com.lab.sadba.planeteparents.data.model.Resultat;
 import com.lab.sadba.planeteparents.data.model.postuser;
 import com.lab.sadba.planeteparents.data.remote.APIService;
 import com.lab.sadba.planeteparents.data.remote.ApiUtils;
@@ -21,6 +23,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private APIService mAPIService;
+    public static final String PREFS_NAME = "PREFS_NAME";
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +59,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<VerifParent> call, Response<VerifParent> response) {
                 if (response.isSuccessful()){
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                    intent.putExtra("ien_parent", response.body().getResultats().get(0).getIen_parent());
                     startActivity(intent);
+
+                  /*  SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("ien_Parent", response.body().getResultats().get(0).getIen_parent());
+                    editor.apply();*/
+
                 }
             }
 
