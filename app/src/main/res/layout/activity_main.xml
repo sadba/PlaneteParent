@@ -26,10 +26,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/cni"
+            <EditText android:id="@+id/input_cni"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="textCapWords"
                 android:hint="CNI" />
         </android.support.design.widget.TextInputLayout>
 
