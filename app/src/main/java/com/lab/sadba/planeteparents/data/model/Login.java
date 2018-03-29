@@ -1,15 +1,11 @@
 package com.lab.sadba.planeteparents.data.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-
 /**
  * Created by sadba on 29-Mar-18.
  */
 
-public class Register extends RealmObject {
+public class Login {
 
-    @PrimaryKey
     private String ien;
     private String password;
 
@@ -29,6 +25,4 @@ public class Register extends RealmObject {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }

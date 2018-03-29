@@ -1,10 +1,12 @@
 package com.lab.sadba.planeteparents;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         }*/
 
         String ien = getIntent().getStringExtra("ien_parent");
-        Toast.makeText(getApplicationContext(), ien, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), ien, Toast.LENGTH_LONG).show();
 
 
         ienStock.setText(ien, TextView.BufferType.EDITABLE);
@@ -64,7 +66,9 @@ public class RegisterActivity extends AppCompatActivity {
                         register.setPassword(password.getText().toString());
                         realm.copyToRealmOrUpdate(register);
                         realm.commitTransaction();
-                        Toast.makeText(getApplicationContext(), "Insertion reussi", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Creation de compte reussi...Connectez-vous", Toast.LENGTH_LONG).show();
 
                     } catch (Exception e){
                         e.printStackTrace();
