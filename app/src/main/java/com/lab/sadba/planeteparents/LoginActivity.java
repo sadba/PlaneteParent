@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (ien.equals(registers.getIen()) && pwd.equals(registers.getPassword())) {
                     //Toast.makeText(getApplicationContext(), "login reussi", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("ien_parent", ien);
                     startActivity(intent);
                 }
                 }

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Button submitBtn = (Button) findViewById(R.id.btn_verif);
 
 
-        mAPIService = ApiUtils.getAPIService();
+        mAPIService = ApiUtils.getAPIService().create(APIService.class);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<VerifParent> call, Response<VerifParent> response) {
                 if (response.isSuccessful()){
                     Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                    intent.putExtra("ien_parent", response.body().getResultats().get(0).getIen_parent());
+                    intent.putExtra("ien_parent", "1545PMW");
                     startActivity(intent);
 
                   /*  SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
